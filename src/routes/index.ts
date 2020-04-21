@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router, json } from 'express';
+import appoitmentsRouter from './appoitments.routes';
 
 const routes = Router();
 
-routes.get('/', (request, response) =>
-  response.json({ message: 'Hello GoStack' }),
-);
+routes.use(json());
+routes.use('/appointments', appoitmentsRouter);
 
 export default routes;
