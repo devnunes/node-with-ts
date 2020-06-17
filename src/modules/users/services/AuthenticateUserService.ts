@@ -6,6 +6,8 @@ import authConfig from '@config/auth';
 
 import AppError from '@shared/errors/AppError';
 
+import IHashProvider from '@modules/users/providers/HashProvider/model/IHashProvider';
+
 import User from '@modules/users/infra/typeorm/entities/User';
 import IUsersRepository from '../repositories/IUsersRepository';
 
@@ -24,6 +26,8 @@ class AuthenticateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
   ) {}
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -33,7 +37,10 @@ class AuthenticateUserService {
       throw new AppError('Email/Password invalid', 401);
     }
 
-    const passwordMatched = await compare(password, user.password);
+    const passwordMatched = await this.hashProvider.compareHash(
+      password,
+      user.password,
+    );
 
     if (!passwordMatched) {
       throw new AppError('Email/Password invalid', 401);
