@@ -3,7 +3,7 @@ import { differenceInHours } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository';
-import IHashPRovider from '@modules/users/providers/HashProvider/model/IHashProvider';
+import IHashPRovider from '@modules/users/providers/HashProvider/models/IHashProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 // import User from '@modules/users/infra/typeorm/entities/User';
