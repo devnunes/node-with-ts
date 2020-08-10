@@ -1,4 +1,5 @@
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
+import AppError from '@shared/errors/AppError';
 import ListProvidersService from './ListProvidersService';
 
 let fakeUserRepository: FakeUsersRepository;

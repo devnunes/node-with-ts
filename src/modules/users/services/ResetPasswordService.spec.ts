@@ -57,7 +57,7 @@ describe('ResetPasswordService', () => {
       'non-existing-user',
     );
 
-    expect(
+    await expect(
       resetPasswordService.execute({
         token,
         password: '123456',
