@@ -66,7 +66,7 @@ describe('CreateAppointment', () => {
         user_id: 'user',
         provider_id: 'provider',
       }),
-    );
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to create an appointment with same user as provider', async () => {
