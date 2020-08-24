@@ -34,6 +34,7 @@ export default class RedisCacheProvider implements ICacheProvider {
     const pipeline = this.client.pipeline();
 
     keys.forEach(key => {
+      console.log(key);
       pipeline.del(key);
     });
 
